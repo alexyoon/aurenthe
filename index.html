@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AURENTHE — Portfolio Demo</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Portfolio demo website for a fictional aesthetic brand. Not a real product.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Jost:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&display=swap">
+<style>
+:root{
+  --ink:#0d0b09; --ivory:#f8f2e7; --paper:#fffaf0; --sand:#efe3cd;
+  --gold:#b8915b; --gold-hi:#e2c38d; --gold-lo:#8a6a3d; --text:#5b4a36; --muted:#8c7a63;
+  --line:rgba(184,145,91,.35);
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost','Noto Sans KR','Helvetica Neue',Arial,sans-serif; --disp:'Cormorant Garamond',Georgia,serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ivory);color:var(--text);font:300 16px/1.8 var(--sans)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p{margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+
+.demo-bar{background:#2a2218;color:var(--gold-hi);font:400 12.5px/1.5 'Noto Sans KR',var(--sans);text-align:center;padding:8px 16px;letter-spacing:.02em}
+.demo-bar b{font-weight:500;color:#fff3d6}
+
+nav{position:sticky;top:0;z-index:10;background:rgba(13,11,9,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(226,195,141,.25)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px}
+.logo{font:500 20px var(--disp);letter-spacing:.18em;color:var(--gold-hi)}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:13px;letter-spacing:.06em;color:#d9c7a4}
+nav li a{white-space:nowrap}
+nav li a:hover{color:var(--gold-hi)}
+@media(max-width:900px){nav ul{display:none}}
+
+.cover{background:var(--ink);color:#e9d9b8;position:relative;overflow:hidden}
+.cover::before{content:"";position:absolute;inset:0;opacity:.5;background:
+ linear-gradient(135deg,transparent 49.5%,rgba(184,145,91,.12) 50%,transparent 50.5%) 0 0/60px 60px,
+ linear-gradient(45deg,transparent 49.5%,rgba(184,145,91,.08) 50%,transparent 50.5%) 0 0/60px 60px}
+.cover .wrap{position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:32px;align-items:center;padding-block:72px}
+.cover .l{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.brand{font:500 28px var(--disp);letter-spacing:.22em;color:var(--gold-hi)}
+.cover h1{font:500 clamp(34px,4.8vw,56px)/1.15 var(--serif);letter-spacing:.02em}
+.cover .en{font:italic 400 18px/1.5 var(--disp);color:var(--gold);letter-spacing:.04em}
+.tagline{font:italic 400 20px var(--serif);color:var(--gold-hi);border-top:1px solid var(--line);padding-top:16px;letter-spacing:.04em}
+.emblem{width:120px;height:120px}
+.badge{display:inline-block;border:1px solid var(--gold);color:var(--gold-hi);font:400 12px var(--sans);letter-spacing:.12em;padding:6px 14px;border-radius:999px}
+.portrait{aspect-ratio:3/4;max-width:100%;position:relative;border-radius:2px;overflow:hidden;
+ background:radial-gradient(ellipse at 55% 38%,rgba(226,195,141,.35),transparent 55%),linear-gradient(160deg,#2a2218,#0d0b09 70%)}
+.portrait svg{position:absolute;inset:0;width:100%;height:100%}
+@media(max-width:760px){.cover .wrap{grid-template-columns:1fr}}
+
+section.page{padding-block:88px;position:relative}
+section.page+section.page{border-top:1px solid var(--line)}
+.chap{display:flex;align-items:baseline;gap:18px;margin-bottom:6px;flex-wrap:wrap}
+.chap .no{font:400 60px/1 var(--disp);color:var(--gold)}
+.chap h2{font:500 clamp(28px,3.6vw,42px)/1.15 var(--serif);color:var(--gold-lo);text-wrap:balance}
+.sub{font:italic 400 16px var(--disp);color:var(--muted);margin-bottom:34px}
+.bar{display:block;padding:9px 18px;margin:36px 0 18px;font:600 20px var(--serif);color:#5b4128;background:linear-gradient(90deg,var(--gold-hi) 0,rgba(226,195,141,.35) 55%,rgba(226,195,141,0))}
+.bar:first-of-type{margin-top:0}
+.lead{max-width:68ch}
+
+.toc{display:grid;grid-template-columns:140px 1fr;gap:40px;background:linear-gradient(120deg,var(--sand),var(--paper));padding:48px;border:1px solid var(--line)}
+.toc .big{font:300 56px/1 var(--disp);letter-spacing:.18em;writing-mode:vertical-rl;color:var(--gold);align-self:start}
+.toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.toc li a{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font:500 20px var(--serif)}
+.toc li a:hover{color:var(--gold-lo)}
+.toc li b{font:500 16px var(--disp);color:var(--gold)}
+@media(max-width:620px){.toc{grid-template-columns:1fr;padding:28px 20px}.toc .big{writing-mode:horizontal-tb;font-size:40px}}
+
+.split{display:grid;grid-template-columns:1.3fr 1fr;gap:36px;align-items:center}
+@media(max-width:820px){.split{grid-template-columns:1fr}}
+.fig{border-radius:2px;border:1px solid var(--line);background:var(--paper);padding:14px}
+.fig.dark{background:var(--ink);border-color:#3a2f20}
+.fig svg{display:block;width:100%;height:auto}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+.cards.three{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){.cards,.cards.three{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.cards,.cards.three{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:20px 16px;text-align:center;box-shadow:0 8px 18px rgba(138,106,61,.08);display:flex;flex-direction:column;gap:6px;align-items:center;min-width:0}
+.card svg{width:34px;height:34px;stroke:var(--gold);fill:none;stroke-width:1.4}
+.card h3{font:600 20px var(--serif);color:var(--gold-lo)}
+.card p{font-size:13.5px;line-height:1.6;color:var(--muted)}
+.dark-page .card{background:#1a1611;border-color:#3a2f20;box-shadow:none}
+.dark-page .card h3{color:var(--gold-hi)}
+.dark-page .card p{color:#a8977a}
+.quote{margin:34px auto 0;text-align:center;font:italic 500 22px/1.5 var(--serif);color:var(--gold-lo);max-width:44ch;padding-top:18px}
+.quote::before{content:"";display:block;width:60px;height:1px;background:var(--gold);margin:0 auto 14px}
+
+table{width:100%;border-collapse:collapse;background:var(--paper);font-size:14px}
+.tw{overflow-x:auto;border:1px solid var(--line)}
+th{background:linear-gradient(90deg,#b8915b,#d9bb86);color:#fff;font:600 17px var(--serif);letter-spacing:.06em;padding:11px 14px;text-align:left;white-space:nowrap}
+td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top;min-width:150px}
+td:first-child{font-weight:500;color:var(--gold-lo)}
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin-top:20px}
+.vs .big{font:italic 600 36px var(--disp);color:var(--gold)}
+.vs .col{background:var(--paper);border:1px solid var(--line);padding:16px 18px;min-width:0}
+.vs .col h3{font:600 20px var(--serif);color:var(--gold-lo);margin-bottom:6px}
+.vs .col p{font-size:14px;line-height:1.7}
+@media(max-width:600px){.vs{grid-template-columns:1fr}.vs .big{text-align:center}}
+
+.feats{position:relative;aspect-ratio:1;max-width:360px;margin:0 auto;width:100%}
+.feats .ring{position:absolute;inset:20%;border-radius:50%;border:5px solid var(--gold);overflow:hidden;background:radial-gradient(circle at 50% 38%,#e8d7b6,#5b4128 80%)}
+.feats .ring svg{position:absolute;inset:0;width:100%;height:100%}
+.feats b{position:absolute;font:600 18px var(--serif);color:var(--gold-lo);text-align:center;line-height:1.2;width:30%}
+.feats b small{display:block;font:300 11px/1.3 var(--sans);color:var(--muted);margin-top:2px}
+.feats .t{top:0;left:35%}.feats .r{right:-4px;top:42%}.feats .bt{bottom:0;left:35%}.feats .lf{left:-4px;top:42%}
+
+.prod{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;margin-top:28px}
+@media(max-width:760px){.prod{grid-template-columns:1fr}}
+.orb{width:min(260px,70%);aspect-ratio:1;margin:0 auto;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff6dc,#e2c38d 40%,#8a6a3d);box-shadow:0 20px 40px rgba(138,106,61,.35),inset -12px -16px 30px rgba(91,65,40,.45)}
+.steps{display:flex;flex-direction:column;gap:10px}
+.steps div{padding:10px 16px;border:1px solid var(--line);background:var(--paper);font:500 18px var(--serif);color:var(--gold-lo)}
+.steps div.on{background:var(--gold);color:#fff}
+
+.dark-page{background:var(--ink);color:#d9c7a4}
+.dark-page .chap h2{color:var(--gold-hi)}
+.dark-page .bar{background:linear-gradient(90deg,#6d5230,rgba(109,82,48,.2) 60%,transparent);color:var(--gold-hi)}
+.dark-page .lead{color:#c9b793}
+.dark-page .portrait{max-width:420px;width:100%;margin-inline:auto}
+.dark-page .quote{color:var(--gold-hi);text-align:left;margin:20px 0 0;border-left:1px solid var(--gold);padding:0 0 0 18px}
+.dark-page .quote::before{display:none}
+
+.end{background:linear-gradient(160deg,var(--paper),var(--sand))}
+.note{margin-top:22px;font-size:13px;color:var(--muted);border-left:2px solid var(--gold);padding-left:12px}
+.three-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+@media(max-width:760px){.three-cols{grid-template-columns:1fr}}
+.three-cols div{border-top:2px solid var(--gold);padding-top:12px}
+.three-cols h3{font:600 20px var(--serif);color:var(--gold-lo)}
+.three-cols p{font-size:14px}
+footer{background:var(--ink);color:#b9a780;text-align:center;padding:48px 20px;font-size:12px;letter-spacing:.04em;line-height:2}
+footer .brand{margin-bottom:10px}
+footer .kr{font-family:'Noto Sans KR',var(--sans);color:#8f7f60}
+</style>
+</head>
+<body>
+
+<div class="demo-bar"><b>포트폴리오용 데모 사이트</b> · AURENTHE는 가상 브랜드이며, 실제 제품·시술 정보가 아닙니다.</div>
+
+<nav><div class="wrap"><a class="logo" href="#top">AURENTHE</a>
+<ul><li><a href="#contents">Contents</a></li><li><a href="#s1">Structure</a></li><li><a href="#s2">Approach</a></li><li><a href="#s3">Principles</a></li><li><a href="#s4">Collection</a></li><li><a href="#s5">Signature</a></li><li><a href="#s6">Consultation</a></li></ul></div></nav>
+
+<header class="cover" id="top"><div class="wrap">
+ <div class="l">
+  <div class="brand">AURENTHE</div>
+  <svg class="emblem" viewBox="0 0 120 120" fill="none" stroke="#e2c38d" stroke-width="1.2"><polygon points="60,10 110,98 10,98"/><polygon points="60,110 10,22 110,22" opacity=".7"/><circle cx="60" cy="60" r="20"/><circle cx="60" cy="60" r="8"/><circle cx="60" cy="60" r="44" stroke-dasharray="2 5"/></svg>
+  <h1>Structure-First<br>Aesthetic Design</h1>
+  <p class="en">A concept brand for balanced, natural beauty</p>
+  <p class="tagline">Beauty, built on structure.<br><span style="font:300 12px var(--sans);letter-spacing:.08em;color:var(--gold)">Thoughtful design for every face.</span></p>
+  <span class="badge">PORTFOLIO DEMO</span>
+ </div>
+ <div class="portrait"><svg viewBox="0 0 300 400" fill="none" stroke="#e2c38d" stroke-linecap="round">
+  <path d="M60 400 C70 330 110 310 130 290 C110 270 100 240 104 200 C106 150 130 100 175 100 C220 100 238 150 232 200 C230 240 215 270 200 290 C240 310 270 340 280 400" stroke-width="1.2" opacity=".6"/>
+  <g stroke-width=".7" opacity=".85"><path d="M175 120 C200 160 205 200 190 260"/><path d="M165 125 C190 170 192 215 178 270"/><path d="M185 125 C212 165 218 210 205 255"/><path d="M150 140 C175 190 170 240 160 280"/></g>
+  <path d="M0 330 C80 300 170 380 300 300" stroke="#c89b55" stroke-width="2" opacity=".7"/><path d="M0 345 C90 320 170 390 300 320" stroke-width="1" opacity=".5"/>
+  <circle cx="190" cy="205" r="3" fill="#e2c38d"/><circle cx="212" cy="170" r="2" fill="#e2c38d"/></svg>
+  <img class="ph" src="images/demo-cover.jpg" alt="" onerror="this.remove()"></div>
+</div></header>
+
+<section class="page" id="contents"><div class="wrap">
+ <div class="toc"><div class="big">CONTENTS</div>
+ <ol>
+  <li><a href="#s1"><span>Understanding Facial Structure</span><b>01</b></a></li>
+  <li><a href="#s2"><span>The AURENTHE Approach</span><b>02</b></a></li>
+  <li><a href="#s3"><span>Design Principles</span><b>03</b></a></li>
+  <li><a href="#s4"><span>The AURENTHE Collection</span><b>04</b></a></li>
+  <li><a href="#s5"><span>Signature Program: Nose Contour</span><b>05</b></a></li>
+  <li><a href="#s6"><span>Consultation Guide</span><b>06</b></a></li>
+ </ol></div>
+</div></section>
+
+<section class="page" id="s1"><div class="wrap">
+ <div class="chap"><span class="no">01</span><h2>Understanding Facial Structure</h2></div><p class="sub">Why structure matters for a natural look</p>
+ <span class="bar">01 Where Soft Meets Firm</span>
+ <p class="lead">Our faces are built in layers. Soft tissue, connective tissue and the underlying frame work together, and the places where they meet help shape how a face looks and moves. AURENTHE starts every design by looking at these layers as one connected structure.</p>
+ <div class="fig" style="margin-top:26px"><svg viewBox="0 0 640 200" fill="none">
+  <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#e8cfa4"/><stop offset="1" stop-color="#8a6a3d"/></linearGradient></defs>
+  <g stroke="url(#g1)" stroke-width="1.4"><path d="M0 70C140 60 220 100 330 100"/><path d="M0 85C140 80 220 105 330 105"/><path d="M0 100C140 100 220 108 330 108"/><path d="M0 115C140 120 220 112 330 111"/><path d="M0 130C140 140 220 118 330 114"/></g>
+  <rect x="330" y="40" width="310" height="120" fill="#d9b784" opacity=".35"/>
+  <g fill="#fffaf0" stroke="#b8915b" stroke-width="1.4"><circle cx="400" cy="80" r="14"/><circle cx="450" cy="120" r="18"/><circle cx="510" cy="75" r="12"/><circle cx="560" cy="115" r="20"/><circle cx="610" cy="70" r="14"/><circle cx="480" cy="145" r="10"/></g>
+  <g font-size="13" fill="#8c7a63" font-family="Jost,sans-serif"><text x="20" y="30">Soft layers</text><text x="250" y="30">Transition zone</text><text x="590" y="190">Frame</text></g></svg></div>
+ <div class="cards">
+  <div class="card"><svg viewBox="0 0 32 32"><path d="M4 8h24M4 16h24M4 24h24"/></svg><h3>Layered</h3><p>Each layer has its own role in the overall shape.</p></div>
+  <div class="card"><svg viewBox="0 0 32 32"><path d="M4 16h24M22 10l6 6-6 6"/></svg><h3>Connected</h3><p>Changes in one area are felt across the face.</p></div>
+  <div class="card"><svg viewBox="0 0 32 32"><path d="M4 16c4-10 8 10 12 0s8 10 12 0"/></svg><h3>Balanced</h3><p>Harmony matters more than any single feature.</p></div>
+  <div class="card"><svg viewBox="0 0 32 32"><path d="M26 16a10 10 0 1 1-4-8M26 4v6h-6"/></svg><h3>In Motion</h3><p>A face is seen in expression, not only at rest.</p></div>
+ </div>
+ <p class="quote">Good design is not about adding more.<br>It is about how everything fits together.</p>
+</div></section>
+
+<section class="page" id="s2"><div class="wrap">
+ <div class="chap"><span class="no">02</span><h2>The AURENTHE Approach</h2></div><p class="sub">From single points to the whole picture</p>
+ <span class="bar">01 Four Ideas, One Face</span>
+ <div class="split">
+  <p class="lead">The AURENTHE approach looks at support, tension, anchoring and connection together. Instead of focusing on one spot, it considers how each area relates to the rest of the face, aiming for results that feel like your own.</p>
+  <div class="feats"><b class="t">Support<small>The underlying frame</small></b><b class="r">Tension<small>How layers hold together</small></b><b class="bt">Anchoring<small>Points of stability</small></b><b class="lf">Connection<small>How areas relate</small></b>
+   <div class="ring"><svg viewBox="0 0 100 100" fill="none" stroke="#f1dcb0" stroke-width=".8"><path d="M30 95C32 70 40 62 44 56 38 48 36 36 42 26 52 14 70 20 70 38 70 50 64 56 60 62 72 68 78 80 80 95"/></svg><img class="ph" src="images/demo-model.jpg" alt="" onerror="this.remove()"></div></div>
+ </div>
+ <span class="bar">02 Beyond the Surface</span>
+ <p class="lead">A face changes gently over time, and every face is different. AURENTHE begins with listening and careful observation, then plans an approach that respects each person's natural features.</p>
+ <span class="bar">03 Every Stage, Its Own Care</span>
+ <div class="tw"><table><tr><th>Stage</th><th>What we notice</th><th>Care focus</th></tr>
+  <tr><td>Defined</td><td>Clear contours and balanced proportions</td><td>Keep the balance you already have</td></tr>
+  <tr><td>Softening</td><td>Gentler contours and changing volume</td><td>Restore harmony with a light touch</td></tr></table></div>
+ <div class="vs"><div class="col"><h3>Before Planning</h3><p>Concerns are seen one at a time, area by area.</p></div><div class="big">VS</div><div class="col"><h3>With AURENTHE</h3><p>The whole face is considered together, for a more natural balance.</p></div></div>
+</div></section>
+
+<section class="page" id="s3"><div class="wrap">
+ <div class="chap"><span class="no">03</span><h2>Design Principles</h2></div><p class="sub">What guides every AURENTHE design</p>
+ <span class="bar">From Adding Volume to Thoughtful Design</span>
+ <div class="cards three">
+  <div class="card"><h3>Not Just More</h3><p>Less, placed well, often looks better than more.</p></div>
+  <div class="card"><h3>Not Just Faster</h3><p>Good results take planning and time.</p></div>
+  <div class="card"><h3>Not Just One Spot</h3><p>Every detail is seen as part of the whole.</p></div>
+ </div>
+ <div class="fig dark" style="margin-top:26px"><svg viewBox="0 0 640 140" fill="none"><defs><linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#7a5a2f"/><stop offset=".5" stop-color="#f0d9a5"/><stop offset="1" stop-color="#7a5a2f"/></linearGradient></defs>
+  <g stroke="url(#g2)" stroke-width="2"><path d="M0 50C160 40 240 70 320 70S480 40 640 50"/><path d="M0 70C160 62 240 76 320 76S480 62 640 70"/><path d="M0 90C160 86 240 82 320 82S480 86 640 90"/></g>
+  <ellipse cx="320" cy="76" rx="70" ry="22" fill="#f0d9a5" opacity=".25"/></svg></div>
+ <div class="cards">
+  <div class="card"><h3>Natural</h3><p>Looks like you, only more balanced.</p></div><div class="card"><h3>Light</h3><p>A gentle approach, never heavy-handed.</p></div>
+  <div class="card"><h3>Considered</h3><p>Planned around your features.</p></div><div class="card"><h3>Personal</h3><p>No two faces are designed the same.</p></div>
+ </div>
+</div></section>
+
+<section class="page" id="s4"><div class="wrap">
+ <div class="chap"><span class="no">04</span><h2>The AURENTHE Collection</h2></div><p class="sub">A sample brand lineup for this demo</p>
+ <span class="bar">01 About the Brand</span>
+ <div class="tw"><table><tr><th colspan="2">AURENTHE at a Glance</th></tr>
+  <tr><td>Brand</td><td>AURENTHE (fictional concept brand)</td></tr><tr><td>Category</td><td>Aesthetic design concept</td></tr>
+  <tr><td>Lineup</td><td>Signature · Contour · Balance</td></tr><tr><td>Focus areas</td><td>Overall facial balance and profile</td></tr>
+  <tr><td>How to start</td><td>One-on-one consultation</td></tr></table></div>
+ <div class="prod"><div class="orb"></div>
+  <div class="steps"><div class="on">Signature: whole-face balance</div><div>Contour: refined profile lines</div><div>Balance: subtle, everyday harmony</div><div>Consultation: a plan made for you</div></div></div>
+</div></section>
+
+<section class="page dark-page" id="s5"><div class="wrap">
+ <div class="chap"><span class="no">05</span><h2>Signature Program: Nose Contour</h2></div><p class="sub" style="color:var(--gold)">Designed around the center of the face</p>
+ <div class="split">
+  <div><span class="bar">01 Shape and Softness Together</span>
+   <p class="lead">The nose sits at the center of the face, so small details change the overall impression. A good design keeps its shape while still feeling soft and natural with every expression.</p><br>
+   <p class="lead">The Nose Contour program looks at the nose together with the forehead, cheeks and chin, so the result fits the whole face rather than standing out on its own.</p>
+   <p class="quote">The best profile is not the sharpest one.<br>It is the one that suits your face.</p></div>
+  <div class="portrait"><svg viewBox="0 0 300 400" fill="none" stroke="#e2c38d" stroke-linecap="round"><path d="M70 400C80 340 120 320 140 300 125 280 118 250 122 210 126 160 150 110 190 110 230 110 248 160 242 210 240 250 228 280 214 300 250 320 280 350 290 400" stroke-width="1.2" opacity=".6"/><path d="M118 215C128 235 140 250 156 252" stroke-width="1.6" stroke="#f1c978"/><circle cx="150" cy="248" r="9" fill="#f1c978" opacity=".8" stroke="none"/><path d="M0 340C90 300 180 390 300 310" stroke="#c89b55" stroke-width="2" opacity=".7"/></svg><img class="ph" src="images/demo-profile.jpg" alt="" onerror="this.remove()"></div>
+ </div>
+ <span class="bar" style="margin-top:44px">How the Program Works</span>
+ <div class="cards three">
+  <div class="card"><h3>1. Consult</h3><p>Talk through your goals and concerns.</p></div>
+  <div class="card"><h3>2. Design</h3><p>Plan an approach for your own features.</p></div>
+  <div class="card"><h3>3. Follow-up</h3><p>Check in and adjust over time.</p></div>
+ </div>
+</div></section>
+
+<section class="page end" id="s6"><div class="wrap">
+ <div class="chap"><span class="no">06</span><h2>Consultation Guide</h2></div><p class="sub">Common questions we start with</p>
+ <span class="bar">01 Start From the Whole</span>
+ <div class="tw"><table><tr><th>Concern</th><th>What we look at</th><th>Direction</th></tr>
+  <tr><td>Profile looks flat</td><td>Balance of forehead, nose and chin</td><td>Find a profile line that suits the face</td></tr>
+  <tr><td>Proportions feel off</td><td>How each feature relates to the others</td><td>Bring the features into harmony</td></tr>
+  <tr><td>Want a softer look</td><td>Overall contours and expression</td><td>Aim for a gentle, natural impression</td></tr></table></div>
+ <p class="note">This is sample content for a portfolio demo. Results vary from person to person, and any real procedure should be discussed with a qualified professional.</p>
+ <div class="quote" style="margin-top:44px;font-size:30px">From Single Points to the Whole Face</div>
+ <div class="three-cols"><div><h3>From Part to Whole</h3><p>See each feature as part of one face.</p></div><div><h3>From More to Better</h3><p>Focus on balance, not only on adding.</p></div><div><h3>From Now to Later</h3><p>Plan for a look that still feels right over time.</p></div></div>
+</div></section>
+
+<footer><div class="brand">AURENTHE</div>Beauty, built on structure.<br>Portfolio demo website · Fictional brand · Not a real product or medical information<br><span class="kr">본 사이트는 홈페이지 제작 포트폴리오용 데모이며, 실제 업체·제품과 관련이 없습니다.</span></footer>
+
+</body>
+</html>
